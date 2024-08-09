@@ -16,7 +16,7 @@ const createCustomer = async (req, res) => {
 
 const getAllCustomers = async (req, res) => {
   try {
-    const customers = await Customer.find();
+    const customers = await Customer.find().populate('user_id', 'username role email');
     sendSuccessResponse(res, customers);
   } catch (error) {
     sendErrorResponse(res, 500, 'Internal Server Error', error.message);
