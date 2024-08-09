@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const app = express();
 const customerRouters = require("./routes/customer.js");
 const inventoryRouters = require("./routes/inventory.js");
+const authRouters = require("./routes/auth.js");
 
 // Parse JSON payloads
 app.use(express.json());
@@ -20,5 +21,6 @@ mongoose.connect(mongodbUrl, mongodbOptions).then(() => {
 
 app.use("/customer", customerRouters);
 app.use("/inventory", inventoryRouters);
+app.use("/auth", authRouters);
 
 module.exports = app;
